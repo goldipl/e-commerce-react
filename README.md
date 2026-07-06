@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./src/assets/img/logo/BuyIT-logo.jpeg" height="100"/>
+    <img src="./src/assets/img/logo/buyit_logo.png" height="100"/>
 </p>
 
 <h1 align="center">BuyIt</h1>
