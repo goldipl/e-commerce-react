@@ -11,7 +11,7 @@ import {
   CartButtonContainer,
 } from "./HeaderStyles";
 import { ShopContext } from "../../context/ShopContext";
-import BuyItLogo from "./../../assets/img/logo/BuyIT-logo-transparent.png";
+import BuyItLogo from "./../../assets/img/logo/buyit_logo.png";
 
 export const Header = () => {
   const { totalQuantity } = useContext(ShopContext);
@@ -26,9 +26,11 @@ export const Header = () => {
         </LogoContainer>
         <HeaderLinksContainer>
           <CartButtonContainer>
-            <Link to="/e-commerce-react/cart">
+            <Link to="/e-commerce-react/cart" aria-label="View cart">
               <GrCart />
-              <CounterItems>{totalQuantity}</CounterItems>
+              <CounterItems>
+                {totalQuantity > 0 ? totalQuantity : ""}
+              </CounterItems>
             </Link>
           </CartButtonContainer>
         </HeaderLinksContainer>

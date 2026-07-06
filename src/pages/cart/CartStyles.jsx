@@ -23,7 +23,7 @@ export const TotalSummaryContainer = styled.div`
   align-items: flex-end;
   width: max-content;
   margin: 16px 0 0 auto;
-  border: 1px solid #ff0000;
+  border: 1px solid #5b4cff;
   padding: 12px;
   p {
     margin: 4px 0;

@@ -2,9 +2,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 50;
   width: 100%;
-  box-shadow: 0 13px 18px -14px #888888;
-  background: linear-gradient(to right, #ff0000, #990000);
+  background: rgba(247, 246, 242, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid #e4e2dc;
 `;
 
 export const HeaderBar = styled.div`
@@ -12,50 +17,67 @@ export const HeaderBar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 70vw;
+  width: 88vw;
   max-width: 1240px;
-  height: 60px;
+  height: 72px;
   margin: 0 auto;
+
   @media (max-width: 800px) {
-    width: 90vw;
+    width: 92vw;
+    height: 64px;
   }
 `;
 
 export const LogoContainer = styled.div`
   font-size: 24px;
-  a {
-    color: #ffffff;
+  display: flex;
+  align-items: center;
+
+  img {
+    display: block;
+    transition: transform 0.25s ease;
+  }
+
+  a:hover img {
+    transform: scale(1.04);
   }
 `;
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
   font-weight: 600;
-  color: #000000;
+  color: #0f0f1a;
+  img {
+    height: auto;
+  }
 `;
 
 export const HeaderLinksContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 8px;
 `;
 
-export const CounterItems = styled.div`
+export const CounterItems = styled.span`
   position: absolute;
-  top: -12px;
-  right: -20px;
+  top: -6px;
+  right: -8px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: 13px;
-  border-radius: 50%;
-  width: 22px;
+  min-width: 20px;
   height: 20px;
-  padding-top: 2px;
-  background: #bbbbbb;
-  font-weight: 600;
-  text-decoration: none;
-  margin-left: 8px;
+  padding: 0 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f0f1a;
+  background: #c6ff3d;
+  border-radius: 999px;
+  border: 2px solid #f7f6f2;
+  line-height: 1;
+
   &:empty {
     display: none;
   }
@@ -63,15 +85,30 @@ export const CounterItems = styled.div`
 
 export const CartButtonContainer = styled.div`
   position: relative;
-  margin-right: 20px;
+
   a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    transition:
+      background 0.2s ease,
+      transform 0.15s ease;
+
     svg {
-      font-size: 24px;
-      filter: invert(100%);
-      margin-left: 16px;
-      &:hover {
-        filter: unset !important;
-      }
+      font-size: 19px;
+      color: #f7f6f2;
+    }
+
+    &:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 `;

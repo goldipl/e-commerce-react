@@ -7,7 +7,7 @@ export const ItemCartContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  border: 1px solid #ff0000;
+  border: 1px solid #5b4cff;
   padding: 16px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -87,8 +87,8 @@ export const CartBtn = styled.button`
   z-index: 1;
   border: none;
   background-color: #ffffff;
-  color: #ff0000;
-  border: 1px solid #ff0000;
+  color: #5b4cff;
+  border: 1px solid #5b4cff;
   font-weight: 600;
   -webkit-transition-duration: 0.6s;
   transition-duration: 0.6s;
@@ -115,7 +115,7 @@ export const CartBtn = styled.button`
   }
   &:hover {
     color: #000000;
-    background-color: #ff0000;
+    background-color: #5b4cff;
   }
 `;
 

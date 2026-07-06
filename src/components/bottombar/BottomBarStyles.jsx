@@ -27,6 +27,6 @@ export const BlackLink = styled(Link)`
   color: #000000;
   margin: 0 8px;
   &:hover {
-    color: #ff0000;
+    color: #5b4cff;
   }
 `;

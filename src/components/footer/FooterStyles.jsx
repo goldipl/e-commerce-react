@@ -1,11 +1,15 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const FooterContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    box-shadow: 0 -13px 18px -14px #888888;
-    padding: 8px 0;
-    background: linear-gradient(to left, #FF0000, #990000);
-    color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 28px 0;
+  margin-top: 48px;
+  background: #0f0f1a;
+  color: #f7f6f2;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
 `;

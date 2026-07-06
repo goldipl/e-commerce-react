@@ -82,7 +82,7 @@ export const AddToCartBtn = styled.button`
   height: 40px;
   z-index: 1;
   border: none;
-  background-color: #ff0000;
+  background-color: #5b4cff;
   color: #ffffff;
   font-weight: 600;
   -webkit-transition-duration: 0.6s;

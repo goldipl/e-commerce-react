@@ -1,12 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 export const FooterYear = () => {
-  return (
-    <FooterYearSpan>{(new Date().getFullYear())}</FooterYearSpan>
-  )
-}
+  return <FooterYearSpan>{new Date().getFullYear()}</FooterYearSpan>;
+};
 
-const FooterYearSpan = styled.span `
-    margin-left: 4px;
+const FooterYearSpan = styled.span`
+  color: #c6ff3d;
+  font-weight: 600;
 `;

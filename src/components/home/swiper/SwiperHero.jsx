@@ -1,11 +1,5 @@
 // import Swiper core and required modules
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-} from "swiper/modules";
+import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { SwiperHeroContainer } from "./SwiperHeroStyles";
@@ -20,51 +14,59 @@ import banner05 from "./../../../assets/img/home/hero_swiper/banner05.jpg";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import { Link } from "react-router-dom";
+
+const SLIDES = [
+  {
+    img: banner01,
+    to: "/e-commerce-react/games",
+    alt: "Featured PS5 games lineup",
+  },
+  {
+    img: banner02,
+    to: "/e-commerce-react/books",
+    alt: "Featured book releases",
+  },
+  {
+    img: banner03,
+    to: "/e-commerce-react/games",
+    alt: "New arrivals in games",
+  },
+  {
+    img: banner04,
+    to: "/e-commerce-react/games",
+    alt: "Top-rated games this week",
+  },
+  {
+    img: banner05,
+    to: "/e-commerce-react/books",
+    alt: "Bestselling books this week",
+  },
+];
 
 const SwiperHero = () => {
   return (
     <SwiperHeroContainer>
       <Swiper
-        style={{ height: "440px" }}
-        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-        spaceBetween={50}
+        modules={[Navigation, Pagination, A11y, Autoplay]}
+        spaceBetween={20}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
         autoplay={{
-          delay: 2500,
+          delay: 4500,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
+        a11y={{ enabled: true }}
       >
-        <SwiperSlide>
-          <Link to="/e-commerce-react/games">
-            <img src={banner01} alt="banner" width={800} height={400} />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to="/e-commerce-react/books">
-            <img src={banner02} alt="banner" width={800} height={400} />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to="/e-commerce-react/games">
-            <img src={banner03} alt="banner" width={800} height={400} />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to="/e-commerce-react/games">
-            <img src={banner04} alt="banner" width={800} height={400} />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to="/e-commerce-react/books">
-            <img src={banner05} alt="banner" width={800} height={400} />
-          </Link>
-        </SwiperSlide>
+        {SLIDES.map((slide, i) => (
+          <SwiperSlide key={i}>
+            <Link to={slide.to}>
+              <img src={slide.img} alt={slide.alt} width={800} height={400} />
+            </Link>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </SwiperHeroContainer>
   );
