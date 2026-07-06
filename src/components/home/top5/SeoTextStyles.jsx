@@ -63,19 +63,20 @@ export const SeoTextContainer = styled.div`
 
 export const ShopTitle = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: center;
   gap: 12px;
   margin: 40px auto 24px;
   width: 88vw;
   max-width: 1240px;
 
   h1 {
-    font-family: "Space Grotesk", sans-serif;
     font-size: 32px;
     font-weight: 600;
     color: #0f0f1a;
     letter-spacing: -0.01em;
     margin: 0;
+    text-align: center;
   }
 
   @media (max-width: 800px) {
