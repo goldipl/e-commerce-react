@@ -58,6 +58,12 @@ export const NameContainer = styled.div`
   text-align: center;
   font-size: 13px;
   padding: 8px;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: #5b4cff;
+  }
 `;
 
 export const PriceContainer = styled.div`
@@ -127,6 +133,7 @@ export const ItemsCounter = styled.div`
   background: #bbbbbb;
   font-weight: 600;
   z-index: 2;
+  cursor: pointer;
   &:empty {
     display: none;
   }

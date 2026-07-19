@@ -1,49 +1,51 @@
-<p align="center">
-    <img src="./src/assets/img/logo/buyit_logo.png" height="100"/>
-</p>
+# BuyIt — sklep e-commerce (React)
 
-<h1 align="center">BuyIt</h1>
+## Uruchomienie
 
-<p align="center">E-commerce React.js Shop Application.
-</p>
+```bash
+npm install
+npm run dev
+```
 
-## Table of contents
+Build produkcyjny:
 
-- [General info](#general-info)
-- [Technologies](#technologies)
-- [Publishing production version](#publishing-production-version)
-- [Screenshots](#screenshots)
-- [Live](#live-star2)
+```bash
+npm run build
+```
 
-## General info
+## Co jest w projekcie
 
-BuyIt - E-commerce React Shop App
+- **Wyszukiwarka** w headerze (`components/searchbar/SearchBar.jsx`) — podpowiedzi na żywo,
+  Enter przenosi do pierwszego wyniku, Escape zamyka, klik poza komponentem zamyka dropdown.
+- **Strona produktu** (`pages/product/Product.jsx`) — trasa `/e-commerce-react/product/:id`,
+  breadcrumbs, sterowanie ilością w koszyku, sekcja "Podobne produkty" z tej samej kategorii.
+- **Koszyk z localStorage** (`context/ShopContext.jsx`) — stan koszyka przeżywa odświeżenie strony.
+- **Toast** przy dodaniu produktu do koszyka.
 
-## Technologies
+## Struktura
 
-Project was created with:
-
-- Vite
-
-Used technologies, tools & dependencies:
-
-- JavaScript
-- React.js
-- styled-components
-- react-icons
-- react-router-dom
-
-## Publishing production version
-
-Use `npm run deploy` to publish a newest version on production
-
-## Screenshots
-
-- Desktop version :computer: & Mobile version :iphone:
-
-![Screenshot](./src/assets/screenshots/screenshot01.jpg)
-![Screenshot](./src/assets/screenshots/screenshot02.jpg)
-
-## Live :star2:
-
-https://goldipl.github.io/e-commerce-react/#/e-commerce-react/
+```
+src/
+├── components/
+│   ├── bottombar/     — pasek nawigacji pod headerem
+│   ├── footer/
+│   ├── header/         — logo, wyszukiwarka, ikona koszyka
+│   ├── home/
+│   │   ├── swiper/      — karuzela na stronie głównej
+│   │   └── top5/         — sekcje "Top 5" dla każdej kategorii
+│   ├── item/
+│   │   ├── ItemCart/    — pozycja w widoku koszyka
+│   │   └── ItemShop/    — kafelek produktu na listach
+│   └── searchbar/
+├── context/
+│   └── ShopContext.jsx  — cały stan sklepu (koszyk, wyszukiwarka)
+├── data/                — BOOKS, PS5GAMES, TSHIRTS
+└── pages/
+    ├── cart/
+    ├── home/
+    ├── product/          — strona pojedynczego produktu
+    └── shop/
+        ├── books/
+        ├── games/
+        └── tshirts/
+```

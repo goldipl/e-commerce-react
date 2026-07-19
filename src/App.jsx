@@ -7,6 +7,7 @@ import { Games } from "./pages/shop/games/Games";
 import { Tshirts } from "./pages/shop/tshirts/Tshirts";
 import { Home } from "./pages/home/Home";
 import { Cart } from "./pages/cart/Cart";
+import { Product } from "./pages/product/Product";
 import { ShopContextProvider } from "./context/ShopContext";
 import { BottomBar } from "./components/bottombar/BottomBar";
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/e-commerce-react/books" element={<Books />} />
             <Route path="/e-commerce-react/games" element={<Games />} />
             <Route path="/e-commerce-react/t-shirts" element={<Tshirts />} />
+            <Route path="/e-commerce-react/product/:id" element={<Product />} />
             <Route path="/e-commerce-react/cart" element={<Cart />} />
           </Routes>
         </HashRouter>

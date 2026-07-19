@@ -11,6 +11,7 @@ import {
   CartButtonContainer,
 } from "./HeaderStyles";
 import { ShopContext } from "../../context/ShopContext";
+import { SearchBar } from "../searchbar/SearchBar";
 import BuyItLogo from "./../../assets/img/logo/buyit_logo.png";
 
 export const Header = () => {
@@ -24,6 +25,7 @@ export const Header = () => {
             <img src={BuyItLogo} alt="BuyIt Logo" width={112} height={56} />
           </StyledLink>
         </LogoContainer>
+        <SearchBar />
         <HeaderLinksContainer>
           <CartButtonContainer>
             <Link to="/e-commerce-react/cart" aria-label="View cart">

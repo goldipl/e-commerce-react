@@ -17,6 +17,7 @@ export const HeaderBar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   width: 88vw;
   max-width: 1240px;
   height: 72px;
@@ -24,7 +25,10 @@ export const HeaderBar = styled.div`
 
   @media (max-width: 800px) {
     width: 92vw;
-    height: 64px;
+    height: auto;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    gap: 10px;
   }
 `;
 
@@ -32,6 +36,7 @@ export const LogoContainer = styled.div`
   font-size: 24px;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 
   img {
     display: block;
@@ -57,6 +62,7 @@ export const HeaderLinksContainer = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 `;
 
 export const CounterItems = styled.span`
@@ -99,7 +105,7 @@ export const CartButtonContainer = styled.div`
 
     svg {
       font-size: 19px;
-      color: #f7f6f2;
+      color: #0f0f1a;
     }
 
     &:hover {
