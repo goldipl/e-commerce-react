@@ -1,42 +1,65 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { GrCart } from "react-icons/gr";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import {
   HeaderContainer,
+  AnnouncementBar,
   HeaderBar,
   LogoContainer,
-  HeaderLinksContainer,
   StyledLink,
+  HeaderLinksContainer,
+  HeaderIconLink,
   CounterItems,
-  CartButtonContainer,
+  CartTotal,
 } from "./HeaderStyles";
 import { ShopContext } from "../../context/ShopContext";
 import { SearchBar } from "../searchbar/SearchBar";
-import BuyItLogo from "./../../assets/img/logo/buyit_logo.png";
+import { BottomBar } from "../bottombar/BottomBar";
+import { BASE_PATH } from "../../data/catalog";
+import { FREE_SHIPPING_THRESHOLD } from "../../data/checkout";
+import { formatPrice } from "../../utils/format";
+import { Logo } from "../logo/Logo";
 
 export const Header = () => {
-  const { totalQuantity } = useContext(ShopContext);
+  const { totalQuantity, cartTotalPrice, wishlist } = useContext(ShopContext);
 
   return (
     <HeaderContainer>
+      <AnnouncementBar>
+        <span>Darmowa dostawa od {formatPrice(FREE_SHIPPING_THRESHOLD)}</span>
+        <span>
+          Kod <strong>BUYIT10</strong> = −10% na zamówienie
+        </span>
+        <span>30 dni na zwrot</span>
+      </AnnouncementBar>
       <HeaderBar>
         <LogoContainer>
-          <StyledLink to="/e-commerce-react/">
-            <img src={BuyItLogo} alt="BuyIt Logo" width={112} height={56} />
+          <StyledLink to={`${BASE_PATH}/`} aria-label="BuyIt — strona główna">
+            <Logo />
           </StyledLink>
         </LogoContainer>
         <SearchBar />
         <HeaderLinksContainer>
-          <CartButtonContainer>
-            <Link to="/e-commerce-react/cart" aria-label="View cart">
-              <GrCart />
-              <CounterItems>
-                {totalQuantity > 0 ? totalQuantity : ""}
-              </CounterItems>
-            </Link>
-          </CartButtonContainer>
+          <HeaderIconLink
+            to={`${BASE_PATH}/wishlist`}
+            aria-label={`Ulubione (${wishlist.length})`}
+            title="Ulubione"
+          >
+            <AiOutlineHeart />
+            <CounterItems>{wishlist.length > 0 ? wishlist.length : ""}</CounterItems>
+          </HeaderIconLink>
+          <HeaderIconLink
+            to={`${BASE_PATH}/cart`}
+            aria-label={`Koszyk (${totalQuantity})`}
+            title="Koszyk"
+            $wide
+          >
+            <AiOutlineShoppingCart />
+            <CounterItems>{totalQuantity > 0 ? totalQuantity : ""}</CounterItems>
+            <CartTotal>{totalQuantity > 0 ? formatPrice(cartTotalPrice) : "Koszyk"}</CartTotal>
+          </HeaderIconLink>
         </HeaderLinksContainer>
       </HeaderBar>
+      <BottomBar />
     </HeaderContainer>
   );
 };

@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 
 export const SearchWrapper = styled.div`
   position: relative;
-  display: flex;
-  align-items: center;
   flex: 1;
-  max-width: 380px;
+  max-width: 520px;
   min-width: 140px;
+
+  form {
+    width: 100%;
+  }
 
   @media (max-width: 800px) {
     order: 3;
@@ -22,56 +24,60 @@ export const SearchInputContainer = styled.div`
   align-items: center;
   width: 100%;
 
-  svg {
+  > svg {
     position: absolute;
-    left: 12px;
-    font-size: 15px;
-    color: #8a8a94;
+    left: 14px;
+    font-size: 17px;
+    color: var(--muted);
     pointer-events: none;
   }
 `;
 
 export const SearchInput = styled.input`
   width: 100%;
-  height: 38px;
-  padding: 0 12px 0 34px;
+  height: 44px;
+  padding: 0 40px 0 40px;
   border-radius: 999px;
-  border: 1px solid #e4e2dc;
-  background: #ffffff;
-  font-family: "Inter", sans-serif;
-  font-size: 13px;
-  color: #0f0f1a;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--ink);
   outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &::placeholder {
-    color: #8a8a94;
+    color: var(--muted);
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
   }
 
   &:focus {
-    border-color: #5b4cff;
+    border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(91, 76, 255, 0.12);
   }
 `;
 
 export const ClearBtn = styled.button`
   position: absolute;
-  right: 8px;
+  right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border: none;
   border-radius: 50%;
-  background: #f2f1ec;
-  color: #4a4a56;
+  background: var(--surface-2);
+  color: var(--text);
   font-size: 12px;
   cursor: pointer;
 
   &:hover {
-    background: #e4e2dc;
+    background: var(--border);
   }
 `;
 
@@ -80,39 +86,43 @@ export const ResultsDropdown = styled.div`
   top: calc(100% + 8px);
   left: 0;
   right: 0;
-  background: #ffffff;
-  border: 1px solid #e4e2dc;
-  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   box-shadow: 0 16px 40px rgba(15, 15, 26, 0.14);
   overflow: hidden;
   z-index: 60;
-  max-height: 420px;
+  max-height: 480px;
   overflow-y: auto;
 `;
 
 export const ResultItem = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
+  gap: 12px;
+  padding: 8px 14px;
   text-decoration: none;
-  border-bottom: 1px solid #f2f1ec;
-
-  &:last-child {
-    border-bottom: none;
-  }
+  border-bottom: 1px solid var(--surface-2);
+  background: ${({ $active }) => ($active ? "var(--bg)" : "transparent")};
 
   &:hover {
-    background: #f7f6f2;
+    background: var(--bg);
   }
 
   img {
-    width: 34px;
-    height: 46px;
-    object-fit: cover;
+    width: 36px;
+    height: 48px;
+    object-fit: contain;
     border-radius: 4px;
     flex-shrink: 0;
-    background: #f2f1ec;
+    background: var(--surface-2);
+  }
+
+  > strong {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--ink);
+    white-space: nowrap;
   }
 `;
 
@@ -120,30 +130,42 @@ export const ResultText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
-  overflow: hidden;
+  min-width: 0;
 
-  span:first-child {
-    font-family: "Questrial", sans-serif;
-    font-size: 13px;
+  span {
+    font-size: 13.5px;
     font-weight: 600;
-    color: #0f0f1a;
+    color: var(--ink);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  span:last-child {
-    font-family: "Inter", sans-serif;
+  small {
     font-size: 12px;
-    color: #5b4cff;
-    font-weight: 700;
+    color: var(--muted);
   }
 `;
 
 export const NoResults = styled.div`
-  padding: 16px 12px;
+  padding: 18px 14px;
   text-align: center;
-  font-family: "Inter", sans-serif;
   font-size: 13px;
-  color: #8a8a94;
+  color: var(--muted);
+`;
+
+export const ShowAllLink = styled.button`
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--accent-soft);
+  }
 `;

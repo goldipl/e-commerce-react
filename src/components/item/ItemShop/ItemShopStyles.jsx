@@ -1,140 +1,144 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled.article`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 200px;
-  margin: 16px;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+
   &:hover {
-    box-shadow: 0px 0px 24px -5px rgba(66, 68, 90, 1);
-    -webkit-box-shadow: 0px 0px 24px -5px rgba(66, 68, 90, 1);
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
   }
-  @media (max-width: 800px) {
-    width: 40vw;
-    margin: 8px;
+
+  img {
+    opacity: ${({ $unavailable }) => ($unavailable ? 0.55 : 1)};
   }
 `;
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled(Link)`
   display: flex;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 3 / 4;
+  padding: 16px;
+  background: var(--surface-2);
+
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.35s ease;
+  }
+
+  ${ItemContainer}:hover & img {
+    transform: scale(1.04);
   }
 `;
 
-export const TextContainer = styled.div`
+export const BadgesOverlay = styled.div`
   position: absolute;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  bottom: 40px;
-  left: 0;
-  background-color: #ffffffdb;
-  min-height: 52px;
-  width: 100%;
+  top: 10px;
+  left: 10px;
+  right: 52px;
+  pointer-events: none;
 `;
 
-export const IDContainer = styled.div`
+export const WishlistBtn = styled.button`
   position: absolute;
+  top: 8px;
+  right: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  left: 0;
-  width: max-content;
-  padding: 4px;
-  border-radius: 0 0 8px 0;
-  background-color: #ffffffdb;
-`;
-
-export const NameContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 13px;
-  padding: 8px;
-  color: inherit;
-  text-decoration: none;
-
-  &:hover {
-    color: #5b4cff;
-  }
-`;
-
-export const PriceContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-right: 8px;
-  font-size: 13px;
-  strong {
-    font-size: 16px;
-  }
-`;
-
-export const AddToCartBtn = styled.button`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  width: 100%;
-  height: 40px;
-  z-index: 1;
+  width: 36px;
+  height: 36px;
   border: none;
-  background-color: #5b4cff;
-  color: #ffffff;
-  font-weight: 600;
-  -webkit-transition-duration: 0.6s;
-  transition-duration: 0.6s;
-  text-decoration: none;
-  overflow: hidden;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: ${({ $active }) => ($active ? "var(--danger)" : "var(--ink)")};
+  font-size: 18px;
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
-  &::after {
-    content: "";
-    background: #ffffffdb;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px !important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 0.8s;
-  }
-  &:active::after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s;
-  }
+  transition: transform 0.15s ease;
+
   &:hover {
-    color: #000000;
+    transform: scale(1.1);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(91, 76, 255, 0.35);
   }
 `;
 
-export const ItemsCounter = styled.div`
+export const CardBody = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  position: absolute;
-  bottom: -14px;
-  right: -9px;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  background: #bbbbbb;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  padding: 14px 14px 0;
+`;
+
+export const MetaLine = styled.span`
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const NameLink = styled.h3`
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6em;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--ink);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--accent);
+  }
+`;
+
+export const PriceRow = styled.div`
+  margin-top: auto;
+  padding-top: 4px;
+`;
+
+export const CardActions = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px 14px;
+`;
+
+export const InCartNote = styled.span`
+  font-size: 12px;
   font-weight: 600;
-  z-index: 2;
-  cursor: pointer;
-  &:empty {
-    display: none;
+  color: var(--accent);
+  text-align: center;
+`;
+
+export const ProductGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 20px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 `;

@@ -1,18 +1,26 @@
 import React from "react";
-import {
-  BottomBarContainer,
-  BottomBarLinks,
-  BlackLink,
-} from "./BottomBarStyles";
+import { BottomBarContainer, BottomBarLinks, NavItem, Spacer } from "./BottomBarStyles";
+import { BASE_PATH, CATEGORY_LIST } from "../../data/catalog";
 
 export const BottomBar = () => {
   return (
-    <BottomBarContainer>
+    <BottomBarContainer aria-label="Kategorie">
       <BottomBarLinks>
-        <BlackLink to="/e-commerce-react/">Home</BlackLink>
-        <BlackLink to="/e-commerce-react/books">Books</BlackLink>
-        <BlackLink to="/e-commerce-react/games">Games</BlackLink>
-        <BlackLink to="/e-commerce-react/t-shirts">T-shirts</BlackLink>
+        {CATEGORY_LIST.map((category) => (
+          <NavItem key={category.key} to={category.path}>
+            {category.label}
+          </NavItem>
+        ))}
+        <NavItem to={`${BASE_PATH}/sale`} $highlight>
+          Promocje
+        </NavItem>
+        <Spacer />
+        <NavItem to={`${BASE_PATH}/help/delivery`} $muted>
+          Dostawa i płatności
+        </NavItem>
+        <NavItem to={`${BASE_PATH}/help/contact`} $muted>
+          Kontakt
+        </NavItem>
       </BottomBarLinks>
     </BottomBarContainer>
   );

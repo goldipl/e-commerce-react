@@ -1,158 +1,121 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const ItemCartContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
+export const ItemCartContainer = styled.li`
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr) auto;
   align-items: center;
-  border: 1px solid #5b4cff;
-  padding: 16px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  @media (max-width: 800px) {
-    flex-direction: column;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 12px 14px;
   }
 `;
 
-export const ImageCartContainer = styled.div`
+export const ImageCartContainer = styled(Link)`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 3 / 4;
+  padding: 6px;
+  border-radius: 10px;
+  background: var(--surface-2);
+
   img {
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 640px) {
+    grid-row: span 2;
+    align-self: start;
   }
 `;
 
 export const TextCartContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  bottom: 80px;
-  left: 0;
-  background-color: #ffffffdb;
-  min-height: 52px;
-  width: 100%;
-  @media (max-width: 800px) {
-    flex-direction: column;
-    gap: 8px;
-  }
-`;
-
-export const IDCartContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: max-content;
-  white-space: pre;
-  font-weight: 800;
-  margin: 0 16px;
-  border-radius: 0 0 8px 0;
-  background-color: #ffffffdb;
-  @media (max-width: 800px) {
-    margin: 8px 0;
-  }
-`;
-
-export const NameCartContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 13px;
-  padding: 8px;
-`;
-
-export const PriceCartContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  margin-right: 8px;
-  font-size: 13px;
-  text-align: center;
-  strong {
-    font-size: 16px;
-  }
+  gap: 4px;
+  min-width: 0;
 `;
 
-export const CartBtn = styled.button`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  width: 64px;
-  height: 40px;
-  margin: 0 16px;
-  z-index: 1;
-  border: none;
-  background-color: #ffffff;
-  color: #5b4cff;
-  border: 1px solid #5b4cff;
-  font-weight: 600;
-  -webkit-transition-duration: 0.6s;
-  transition-duration: 0.6s;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-  &::after {
-    content: "";
-    background: #ffffffdb;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px !important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 0.8s;
-  }
-  &:active::after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s;
-  }
-  &:hover {
-    color: #000000;
-    background-color: #5b4cff;
-  }
-`;
-
-export const ItemsCartCounter = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const NameCartContainer = styled.h3`
+  margin: 0;
+  font-family: var(--font-heading);
   font-size: 16px;
-  width: 24px;
-  height: 24px;
-  padding: 0 16px;
-  margin: 0 8px;
-  font-weight: 600;
-  z-index: 2;
-  &:empty {
-    display: none;
-  }
-  @media (max-width: 800px) {
-    margin: 8px 0;
+  line-height: 1.3;
+  color: var(--ink);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--accent);
   }
 `;
 
-export const QuantityBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  p {
-    font-size: 13px;
-    font-weight: 400;
-    margin: 0;
+export const VariantLine = styled.span`
+  font-size: 13px;
+  color: var(--muted);
+
+  strong {
+    color: var(--ink);
   }
 `;
 
-export const QuantityContainer = styled.div`
+export const UnitPrice = styled.span`
+  font-size: 13px;
+  color: var(--text);
+`;
+
+export const LineControls = styled.div`
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    gap: 10px;
+  }
+`;
+
+export const LineTotal = styled.strong`
+  min-width: 90px;
+  text-align: right;
+  font-size: 16px;
+  color: var(--ink);
+
+  @media (max-width: 640px) {
+    min-width: 0;
+    margin-left: auto;
+  }
+`;
+
+export const RemoveBtn = styled.button`
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--danger-soft);
+    color: var(--danger);
+  }
 `;

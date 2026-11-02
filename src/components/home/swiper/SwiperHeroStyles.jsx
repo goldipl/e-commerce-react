@@ -1,125 +1,184 @@
 import styled from "styled-components";
 
 export const SwiperHeroContainer = styled.div`
-  display: flex;
-  width: 100%;
-  padding: 24px 0 8px;
-
   .swiper {
-    height: auto !important;
-    padding-bottom: 32px;
-    max-width: 1240px;
-    width: 88vw;
-    margin: 0 auto;
-    border: 1px solid #e4e2dc;
-    padding: 24px;
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
 
-    .swiper-wrapper {
-      a {
-        display: flex;
-        justify-content: center;
-        user-select: none;
-        width: 100%;
-        height: 100%;
+  /* Stretch every slide to the tallest one, so slides with less text
+     (e.g. no price) still fill the whole carousel with their background */
+  .swiper-slide {
+    display: flex;
+    height: auto;
+  }
 
-        .swiper-slide {
-          display: flex;
-          justify-content: center;
-          user-select: none;
-          overflow: hidden;
-          border-radius: 24px;
-          box-shadow: 0 4px 24px rgba(15, 15, 26, 0.06);
-          transition:
-            transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-            box-shadow 0.35s ease;
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    box-shadow: 0 4px 16px rgba(15, 15, 26, 0.18);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
 
-          img {
-            height: auto;
-            width: 100%;
-            display: block;
-          }
+    &::after {
+      font-size: 15px;
+      font-weight: 700;
+    }
 
-          &:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 12px 32px rgba(15, 15, 26, 0.14);
-          }
-        }
-      }
+    &:hover {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 7px;
+    height: 7px;
+    background: #ffffff;
+    opacity: 0.5;
+    transition:
+      opacity 0.2s ease,
+      width 0.2s ease;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 22px;
+    border-radius: 4px;
+    background: var(--lime);
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .swiper {
+      border-radius: var(--radius);
     }
 
     .swiper-button-prev,
     .swiper-button-next {
-      color: #0f0f1a;
-      background-color: #f7f6f2;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      box-shadow: 0 4px 16px rgba(15, 15, 26, 0.1);
-      transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
-
-      &::after {
-        font-size: 16px;
-        font-weight: 700;
-      }
-
-      &:hover {
-        background-color: #5b4cff;
-        color: #ffffff;
-      }
+      display: none;
     }
+  }
+`;
 
-    .swiper-pagination {
-      bottom: 8px;
+export const Slide = styled.div`
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  min-height: 400px;
+  padding: 48px 88px;
+  color: #ffffff;
 
-      .swiper-pagination-bullet {
-        background: #0f0f1a;
-        opacity: 0.25;
-        width: 7px;
-        height: 7px;
-        transition:
-          opacity 0.2s ease,
-          background 0.2s ease,
-          width 0.2s ease;
-      }
+  @media (max-width: 900px) {
+    padding: 40px 72px;
+  }
 
-      .swiper-pagination-bullet-active {
-        background: #5b4cff;
-        opacity: 1;
-        width: 22px;
-        border-radius: 4px;
-      }
+  @media (max-width: 700px) {
+    grid-template-columns: minmax(0, 1fr) 120px;
+    gap: 16px;
+    min-height: 300px;
+    padding: 28px 22px 44px;
+  }
+`;
+
+export const SlideText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+
+  span {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--lime);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(26px, 4vw, 46px);
+    line-height: 1.1;
+  }
+
+  p {
+    margin: 0;
+    max-width: 440px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  strong {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 26px;
+
+    s {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 
-  @media (max-width: 800px) {
-    padding: 12px 0 0;
+  a {
+    display: inline-flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 26px;
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s ease;
 
-    .swiper {
-      width: 92vw;
-
-      .swiper-wrapper {
-        .swiper-slide {
-          border-radius: 16px;
-
-          img {
-            width: 100%;
-            height: auto;
-          }
-        }
-      }
-
-      .swiper-button-prev,
-      .swiper-button-next {
-        width: 36px;
-        height: 36px;
-
-        &::after {
-          font-size: 13px;
-        }
-      }
+    &:hover {
+      transform: translateY(-2px);
     }
+  }
+
+  @media (max-width: 700px) {
+    gap: 10px;
+
+    p {
+      font-size: 13px;
+    }
+
+    strong {
+      font-size: 20px;
+    }
+
+    a {
+      height: 40px;
+      padding: 0 18px;
+      font-size: 14px;
+    }
+  }
+`;
+
+export const SlideImage = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    aspect-ratio: ${({ $card }) => ($card ? "1 / 1" : "3 / 4")};
+    object-fit: contain;
+    border-radius: ${({ $card }) => ($card ? "var(--radius-lg)" : "0")};
+    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.45));
+    transform: rotate(-3deg);
   }
 `;
