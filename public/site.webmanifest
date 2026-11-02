@@ -2,7 +2,7 @@
   "name": "BuyIt — gry, książki i t-shirty",
   "short_name": "BuyIt",
   "lang": "pl",
-  "start_url": "/#/e-commerce-react/",
+  "start_url": "./#/e-commerce-react/",
   "display": "standalone",
   "background_color": "#f7f6f2",
   "theme_color": "#5b4cff",

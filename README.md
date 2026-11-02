@@ -11,6 +11,8 @@ A demo online store selling PS5 games, programming books and cotton t-shirts. Th
 Polish and prices are in PLN. There is no backend: the catalog lives in `src/data`, and the cart,
 wishlist and orders are stored in the browser's `localStorage`.
 
+**Live demo:** https://goldipl.github.io/e-commerce-react/
+
 > This is a demo project. Orders are not fulfilled, no payment is taken, and checkout form data
 > never leaves the browser.
 
@@ -21,11 +23,26 @@ npm install
 npm run dev
 ```
 
+The dev server serves the app under `/e-commerce-react/` (see `base` in `vite.config.js`).
+
 Production build:
 
 ```bash
 npm run build
 ```
+
+### Deploying to GitHub Pages
+
+The site is served from the `gh-pages` branch. Build the app and publish the contents of `dist/`
+to the root of that branch:
+
+```bash
+npm run build
+npx gh-pages -d dist
+```
+
+`base` in `vite.config.js` must match the repository name, otherwise the published page loads
+its scripts and icons from the wrong path.
 
 ## Features
 
